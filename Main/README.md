@@ -37,7 +37,7 @@ This program is done under the license: [MIT License](https://choosealicense.com
 
 Github: https://github.com/Albikras/socialMediaStartup
 
-## Screenshot
+## Video
 
 
 
