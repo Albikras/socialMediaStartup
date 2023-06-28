@@ -43,8 +43,8 @@ module.exports = {
     console.log(req.body);
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.params.userId }, //what does this need to be changed to
-        { $addToSet: req.body },
+        { _id: req.params.userId },
+        { $set: req.body },
         { runValidators: true, new: true }
       );
       if (!user) {
@@ -58,17 +58,21 @@ module.exports = {
 
   async deleteUser(req, res) {
     try {
-      const user = await User.findOneAndRemove(
-        { _id: req.params.userId } //change this
-      );
+      const user = await User.findOneAndRemove({ _id: req.params.userId });
       if (!user) {
         return res.status(404).json({
           message: "no user from this id exists",
         });
       }
-      // const deletingThoughts = await Thought.findOneAndUpdate(
-      //     {deletingUser: req.params. }
-      // )
+
+      const deletingThoughts = await Thought.deleteMany({
+        _id: { $in: user.thoughts },
+      });
+      if (!deletingThoughts) {
+        return res.status(404).json({
+          message: "User deleted thougths not",
+        });
+      }
       res.json({ message: "User Deleted" });
     } catch (err) {
       console.log(err);
