@@ -40,3 +40,7 @@ Github: https://github.com/Albikras/socialMediaStartup
 ## Screenshot
 
 
+
+
+https://github.com/Albikras/socialMediaStartup/assets/124819029/6efeff7a-b909-4c53-8367-d4768f2a5897
+
